@@ -1,0 +1,17 @@
+[package]
+name = "strident-mutex"
+version = "0.1.0"
+edition = "2021"
+# this should never be used as a publishable dependency, only dev time tool through git dep.
+publish = false
+
+[features]
+default = ["hide_async_test_panic"]
+hide_async_test_panic = ["once_cell"]
+
+[dependencies]
+once_cell = { version = "1.16.0", optional = true }
+tokio = { version = "1", features = ["rt"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt", "rt-multi-thread", "macros"] }
